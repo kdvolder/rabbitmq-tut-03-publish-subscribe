@@ -1,14 +1,14 @@
-RabbitMQ Work Quees with Maven and Eclipse
-==========================================
+RabbitMQ Publish Subscribe with Maven and Eclipse
+=================================================
 
-Code based on the [RabbitMQ Work Queues Tutorial](https://www.rabbitmq.com/tutorials/tutorial-three-java.html).
+Code based on the [RabbitMQ Pub Sub](http://www.rabbitmq.com/tutorials/tutorial-three-java.html).
 
-Minor modifications to make this more convenient to run from inside Eclise with the help of m2e.
+Minor modifications to make this more convenient to run from inside Eclipse with the help of m2e.
 
 Changes from the original tutorial code:
 
   - pom.xml added to declare dependency on rabbitmq client library.
-  - 'NewTask' runs in a loop and reads tasks from System.in instead of commandline args.
+  - 'EmitLog' runs in a loop and reads messages from System.in instead of commandline args.
 
 Importing into Eclipse
 ======================
@@ -18,9 +18,8 @@ You need M2E (maven tooling for Eclipse). Simple import the code in this project
 Running
 =======
 
-Like in the original tutorial, you need three consoles. In the first one you run
-"NewTask" in the other two "Worker". Use "Run As >> Java Application" to run "NewTask" once and
-run "Worker" twice. You can create additional Eclipse Console Views and pin the respective processes
-to them.
+Run any number of "EmitLog" and "ReceiveLogs" processes by right click on the 
+respective class and use "Run As >> Java Application". You can create additional Eclipse Console Views and pin one console to each process. Any messages you type
+in a "EmitLog" console will be broadcast to all the "ReceiveLogs" processes.
 
-Any stuff you type in "NewTask" will be posted to the work queue and dispatched to one of the workers.
+EmitLog and ReceiveLogs processes can be started or killed at any time.
